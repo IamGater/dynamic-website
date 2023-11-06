@@ -3,12 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-.body {
+body {
   background: #17181a;
   font-family: "Montserrat", sans-serif;
 }
 
-#Logo {
+#logo {
   color: white;
   font-family: "Abril Fatface", sans-serif;
 }
@@ -89,7 +89,7 @@
   align-self: flex-start;
   cursor: pointer;
 }
-.nav-bar {
+ .nav-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -110,9 +110,11 @@
 .nav-links {
   font-size: 4rem;
   flex-basis: 30rem;
+  list-style: none;
 }
-.nav-links h3 {
+.nav-links li {
   padding: 3rem 0;
+  cursor: pointer;
 }
 .contact {
   flex-basis: 30rem;
