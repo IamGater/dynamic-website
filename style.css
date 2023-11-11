@@ -149,3 +149,6 @@ body {
   transition-property: background, transform;
   transform-origin: 75% 75%;
 }
+.scrollmagic-pin-spacer{
+  position: static !important;
+}
