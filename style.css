@@ -234,8 +234,9 @@ main {
   object-fit: cover;
 }
 .fashion-text h1 {
-  font-size: 6rem;
+  font-size: 5rem;
   padding: 5rem 0rem;
+  color: rgb(255, 139, 93);
 }
 .fashion1 h1 {
   color: rgb(255, 139, 93);
@@ -247,15 +248,15 @@ main {
   color: rgb(86, 124, 228);
 }
 .fashion-text p {
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding: 2rem 2rem 0rem 0rem;
   margin-bottom: 10rem;
 }
 .fashion-nr {
   font-size: 15rem;
   position: absolute;
-  left: 50%;
-  bottom: 10%;
+  left: 25%;
+  bottom: -7%;
   color: white;
   opacity: 0.4;
 }
