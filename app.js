@@ -15,24 +15,24 @@ function animateSlides() {
     const revealText = slide.querySelector(".reveal-text");
 
     const slideTl = gsap.timeline({
-      default: { duration: 1, ease: "power2.inpOut" },
+      defaults: { duration: 1, ease: "power2.inpOut" },
     });
     slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
     slideTl.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
     slideTl.fromTo(revealText, { x: "0%" }, { x: "100%" }, "-=0.4");
-    slideTl.fromTo(nav, { y: "-100%" }, { y: "0%" }, "-=0.5");
+    
 
     slideScene = new ScrollMagic.Scene({
       triggerElement: slide,
       triggerHook: 0.25,
       reverse: false,
     })
-      .setTween(slide)
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "slide",
-      })
+      .setTween(slideTl)
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "slide",
+      // })
       .addTo(controller);
 
     const pageTl = gsap.timeline();
@@ -46,12 +46,12 @@ function animateSlides() {
       duration: "100%",
       triggerHook: 0,
     })
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "page",
-        indent: 200,
-      })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "page",
+      //   indent: 200,
+      // })
       .setPin(slide, { pushFollowers: false })
       .setTween(pageTl)
       .addTo(controller);
@@ -121,13 +121,12 @@ barba.init({
       beforeEnter() {
         logo.href = "../index.html";
         detailAnimation();
-        gsap.fromTo(
-          ".nav-header",
-          1,
-          { y: "100%" },
-          { y: "0%", ease: "power2.inOut" }
-        );
+        
       },
+      beforeLeave(){
+        controller.destroy()
+        detailScene.destroy()
+      }
     },
   ],
   transitions: [
@@ -155,6 +154,12 @@ barba.init({
           { x: "100%", stagger: 0.25, onComplete: done }
         );
         tl.fromTo(next.container, 1, { opacity: 0 }, { opacity: 1 });
+        tl.fromTo(
+          ".nav-header",
+          1,
+          { y: "-100%" },
+          { y: "0%", ease: "power2.inOut" }, '-=0.5'
+        );
       },
     },
   ],
@@ -178,11 +183,11 @@ function detailAnimation() {
     })
       .setPin(slide, { pushFollowers: false })
       .setTween(slideTl)
-      .addIndicators({
-        colorStart: "white",
-        colorTrigger: "white",
-        name: "detailScene"
-      })
+      // .addIndicators({
+      //   colorStart: "white",
+      //   colorTrigger: "white",
+      //   name: "detailScene"
+      // })
       .addTo(controller);
   });
 }
